@@ -39,16 +39,6 @@ public class SampleController {
 	@Transactional(readOnly = true)
 	public List<GoodsType> helloWorld() {
 		List list = goodsTypeService.findAll();
-		/*List<GoodsTitle> list = new ArrayList<GoodsTitle>();
-		GoodsTitle goodsTitle = new GoodsTitle();
-		goodsTitle.setTitle("热门推荐");
-		list.add(goodsTitle);
-		goodsTitle = new GoodsTitle();
-		goodsTitle.setTitle("医药保健");
-		list.add(goodsTitle);
-		goodsTitle = new GoodsTitle();
-		goodsTitle.setTitle("家乡特产");
-		list.add(goodsTitle);*/
 		return list;
 	}
 
