@@ -1,16 +1,36 @@
 CREATE TABLE `tescoplay`.`goods_type` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `title` VARCHAR(20) NOT NULL COMMENT 'ÉÌÆ·ÀàĞÍ±êÌâ',
-  `goods_type` VARCHAR(2) NOT NULL COMMENT 'ÉÌÆ·ÀàĞÍcode',
-  `goods_type_desc` VARCHAR(100) NULL COMMENT 'ÉÌÆ·ÀàĞÍÃèÊö',
-  `is_active` VARCHAR(2) NOT NULL DEFAULT 'Y' AFTER `goods_type_desc`,
+  `goods_type_id` INT NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(20) NOT NULL COMMENT 'å•†å“ç±»å‹æ ‡é¢˜',
+  `goods_type` VARCHAR(2) NOT NULL COMMENT 'å•†å“ç±»å‹code',
+  `goods_type_desc` VARCHAR(100) NULL COMMENT 'å•†å“ç±»å‹æè¿°',
+  `is_active` VARCHAR(2) NOT NULL DEFAULT 'Y',
   PRIMARY KEY (`id`),
   UNIQUE INDEX `goods_type_UNIQUE` (`goods_type` ASC),
   UNIQUE INDEX `title_UNIQUE` (`title` ASC))
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_bin
-COMMENT = 'ÉÌÆ·ÀàĞÍ';
+COMMENT = 'å•†å“ç±»å‹';
 
-insert into goods_type(title,goods_type,goods_type_desc) values('ÈÈÃÅÍÆ¼ö','01','±È½ÏÈÈÃÅµÄÉÌÆ·');
-insert into goods_type(title,goods_type,goods_type_desc) values('Ò½Ò©±£½¡','02','Ò½Ò©±£½¡Æ·');
-insert into goods_type(title,goods_type,goods_type_desc) values('¼ÒÏçÌØ²ú','03','¼ÒÏçÌØ²ú');
+insert into goods_type(title,goods_type,goods_type_desc) values('çƒ­é—¨æ¨è','01','æ¯”è¾ƒçƒ­é—¨çš„å•†å“');
+insert into goods_type(title,goods_type,goods_type_desc) values('åŒ»è¯ä¿å¥','02','åŒ»è¯ä¿å¥å“');
+insert into goods_type(title,goods_type,goods_type_desc) values('å®¶ä¹¡ç‰¹äº§','03','å®¶ä¹¡ç‰¹äº§');
+
+CREATE TABLE `tescoplay`.`goods` (
+  `goods_id` INT NOT NULL AUTO_INCREMENT,
+  `goods_type_id` INT NOT NULL,
+  `goods_name` VARCHAR(20) NOT NULL COMMENT 'å•†å“åç§°',
+  `goods_desc` VARCHAR(100) NULL COMMENT 'å•†å“æè¿°',
+  `first_image` VARCHAR(100) NOT NULL COMMENT 'ç¬¬ä¸€å¼ å›¾ç‰‡',
+  `money` VARCHAR(100) NULL COMMENT 'ä»·æ ¼',
+  `is_active` VARCHAR(2) NOT NULL DEFAULT 'Y' ,
+  PRIMARY KEY (`goods_id`))
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_bin
+COMMENT = 'å•†å“';
+
+CREATE TABLE `tescoplay`.`goods_images` (
+  `goods_images_id` INT NOT NULL,
+  `goods_id` INT NOT NULL,
+  `image` MEDIUMBLOB NOT NULL,
+  PRIMARY KEY (`goods_images_id`))
+COMMENT = 'å•†å“å›¾ç‰‡';
