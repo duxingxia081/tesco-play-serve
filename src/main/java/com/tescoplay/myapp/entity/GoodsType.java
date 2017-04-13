@@ -24,6 +24,8 @@ public class GoodsType implements Serializable {
 	@Column(nullable = false)
 	private String goodsTypeDesc;
 
+	@Column(nullable = false)
+	private String isActive;
 	public Long getGoodsTypeId() {
 		return goodsTypeId;
 	}
@@ -54,5 +56,13 @@ public class GoodsType implements Serializable {
 
 	public void setGoodsTypeDesc(String goodsTypeDesc) {
 		this.goodsTypeDesc = goodsTypeDesc;
+	}
+
+	public String getIsActive() {
+		return isActive;
+	}
+
+	public void setIsActive(String isActive) {
+		this.isActive = isActive;
 	}
 }

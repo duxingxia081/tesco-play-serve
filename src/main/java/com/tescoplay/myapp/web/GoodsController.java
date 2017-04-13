@@ -24,7 +24,7 @@ import java.util.List;
 @RequestMapping("/goods")
 public class GoodsController {
 
-	public static final String ROOT = "upload-dir";
+	public static final String ROOT = "/home/weizh/img/";
 
 	private final ResourceLoader resourceLoader;
 
@@ -38,14 +38,14 @@ public class GoodsController {
 	@ResponseBody
 	@Transactional(readOnly = true)
 	public List<GoodsType> goodsTypes() {
-		List list = goodsTypeService.findAll();
+		List list = goodsTypeService.findByActive();
 		return list;
 	}
 	@GetMapping("/listGoods")
 	@ResponseBody
 	@Transactional(readOnly = true)
 	public List<Goods> listGoods() {
-		List list = goodsService.findAll();
+		List list = goodsService.findByActive();
 		System.out.println("goodList");
 		return list;
 	}
@@ -58,7 +58,7 @@ public class GoodsController {
 	public ResponseEntity<?> getFile(@PathVariable String file,@PathVariable String filename) {
 
 		try {
-			return ResponseEntity.ok(resourceLoader.getResource("file:" + Paths.get("/home/weizh/img/"+file+"/", filename).toString()));
+			return ResponseEntity.ok(resourceLoader.getResource("file:" + Paths.get(ROOT+file+"/", filename).toString()));
 		} catch (Exception e) {
 			return ResponseEntity.notFound().build();
 		}

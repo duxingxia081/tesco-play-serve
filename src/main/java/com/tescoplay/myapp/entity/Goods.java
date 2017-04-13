@@ -30,6 +30,9 @@ public class Goods implements Serializable {
 	@Column(nullable = false)
 	private String firstImage;
 
+	@Column(nullable = false)
+	private String isActive;
+
 	public Long getGoodsId() {
 		return goodsId;
 	}
@@ -76,5 +79,13 @@ public class Goods implements Serializable {
 
 	public void setFirstImage(String firstImage) {
 		this.firstImage = firstImage;
+	}
+
+	public String getIsActive() {
+		return isActive;
+	}
+
+	public void setIsActive(String isActive) {
+		this.isActive = isActive;
 	}
 }
