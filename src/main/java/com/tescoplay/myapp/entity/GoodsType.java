@@ -1,10 +1,9 @@
 package com.tescoplay.myapp.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class GoodsType implements Serializable {
@@ -65,4 +64,5 @@ public class GoodsType implements Serializable {
 	public void setIsActive(String isActive) {
 		this.isActive = isActive;
 	}
+
 }

@@ -33,6 +33,27 @@ public class Goods implements Serializable {
 	@Column(nullable = false)
 	private String isActive;
 
+	@Column(nullable = false)
+	private String goodsLevel;
+
+	@Column(nullable = false)
+	private Integer goodsPoints;
+
+	private Long userBuyNum;
+	public Goods(){}
+	public Goods(Long goodsId,Long goodsTypeId,String goodsName,String goodsDesc,Float money,String firstImage,String goodsLevel,Integer goodsPoints,Long userBuyNum)
+	{
+		super();
+		this.goodsId=goodsId;
+		this.goodsTypeId=goodsTypeId;
+		this.goodsName=goodsName;
+		this.goodsDesc=goodsDesc;
+		this.money=money;
+		this.firstImage=firstImage;
+		this.goodsLevel=goodsLevel;
+		this.goodsPoints=goodsPoints;
+		this.userBuyNum=userBuyNum;
+	}
 	public Long getGoodsId() {
 		return goodsId;
 	}
@@ -87,5 +108,29 @@ public class Goods implements Serializable {
 
 	public void setIsActive(String isActive) {
 		this.isActive = isActive;
+	}
+
+	public String getGoodsLevel() {
+		return goodsLevel;
+	}
+
+	public void setGoodsLevel(String goodsLevel) {
+		this.goodsLevel = goodsLevel;
+	}
+
+	public Integer getGoodsPoints() {
+		return goodsPoints;
+	}
+
+	public void setGoodsPoints(Integer goodsPoints) {
+		this.goodsPoints = goodsPoints;
+	}
+
+	public Long getUserBuyNum() {
+		return userBuyNum;
+	}
+
+	public void setUserBuyNum(Long userBuyNum) {
+		this.userBuyNum = userBuyNum;
 	}
 }

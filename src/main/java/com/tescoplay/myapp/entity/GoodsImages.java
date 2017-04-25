@@ -19,7 +19,7 @@ public class GoodsImages implements Serializable {
 	private Long goodsId;
 
 	@Column(nullable = false)
-	private byte[] image;
+	private String imagePath;
 
 	public Long getGoodsImagesId() {
 		return goodsImagesId;
@@ -37,11 +37,11 @@ public class GoodsImages implements Serializable {
 		this.goodsId = goodsId;
 	}
 
-	public byte[] getImage() {
-		return image;
+	public String getImagePath() {
+		return imagePath;
 	}
 
-	public void setImage(byte[] image) {
-		this.image = image;
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
 	}
 }
