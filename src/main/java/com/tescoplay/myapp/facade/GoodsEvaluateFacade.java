@@ -29,16 +29,15 @@ public class GoodsEvaluateFacade{
     public List<GoodsEvaluateDTO> listByGoodsId(Long goodsId)
     {
         List<GoodsEvaluate> list = goodsEvaluateService.listByGoodsId(goodsId);
+        List<GoodsEvaluateDTO> listDto = new ArrayList<GoodsEvaluateDTO>();
         if(!CollectionUtils.isEmpty(list))
         {
-            List<GoodsEvaluateDTO> listDto = new ArrayList<GoodsEvaluateDTO>();
             for (GoodsEvaluate goodsEvaluate:list) {
                 GoodsEvaluateDTO dto = new GoodsEvaluateDTO();
                 BeanUtils.copyProperties(goodsEvaluate,dto);
                 listDto.add(dto);
             }
-            return listDto;
         }
-        return null;
+        return listDto;
     }
 }

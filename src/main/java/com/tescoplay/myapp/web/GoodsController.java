@@ -6,21 +6,21 @@ import com.tescoplay.myapp.entity.GoodsBreed;
 import com.tescoplay.myapp.entity.GoodsEvaluate;
 import com.tescoplay.myapp.entity.GoodsType;
 import com.tescoplay.myapp.facade.GoodsEvaluateFacade;
-import com.tescoplay.myapp.service.GoodsBreedService;
-import com.tescoplay.myapp.service.GoodsImagesService;
-import com.tescoplay.myapp.service.GoodsService;
-import com.tescoplay.myapp.service.GoodsTypeService;
+import com.tescoplay.myapp.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -41,7 +41,12 @@ public class GoodsController {
 	private GoodsBreedService goodsBreedService;
 	@Autowired
 	private GoodsEvaluateFacade goodsEvaluateFacade;
-
+	@Autowired
+	private GoodsImgsService goodsImgsService;
+	@GetMapping("/")
+	public String index() {
+		return "forward:index.html";
+	}
 	@GetMapping("/type")
 	@ResponseBody
 	@Transactional(readOnly = true)
@@ -82,13 +87,31 @@ public class GoodsController {
 	@GetMapping("/countGoodsEvaluate&goodsId={goodsId}")
 	@ResponseBody
 	public int countGoodsEvaluate(@PathVariable String goodsId) {
-		int count =  goodsEvaluateFacade.count(Long.parseLong(goodsId));
+		int count =0;
+		if(!StringUtils.isEmpty(goodsId)) {
+			count = goodsEvaluateFacade.count(Long.parseLong(goodsId));
+		}
 		return count;
 	}
 	@GetMapping("/listGoodsEvaluate&goodsId={goodsId}")
 	@ResponseBody
 	public List<GoodsEvaluateDTO> listGoodsEvaluate(@PathVariable String goodsId) {
-		List<GoodsEvaluateDTO> list = goodsEvaluateFacade.listByGoodsId(Long.parseLong(goodsId));
+		List<GoodsEvaluateDTO> list = new ArrayList<>();
+		if(!StringUtils.isEmpty(goodsId))
+		{
+			list = goodsEvaluateFacade.listByGoodsId(Long.parseLong(goodsId));
+		}
+		return list;
+	}
+	@GetMapping("/goodsImgs&goodsId={goodsId}")
+	@ResponseBody
+	@Transactional(readOnly = true)
+	public List<String> goodsImags(@PathVariable String goodsId) {
+		List<String> list = new ArrayList<>();
+		if(!StringUtils.isEmpty(goodsId))
+		{
+			list = goodsImgsService.findByGoodsId(Long.parseLong(goodsId));
+		}
 		return list;
 	}
 }

@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * ÈÕÆÚ×ª»»¹¤¾ß
+ * æ—¥æœŸè½¬æ¢å·¥å…·
  */
 public class DateUtil
 {
@@ -13,7 +13,7 @@ public class DateUtil
      */
     public static final String DATE_PATTERN_DEFAULT = "yyyy-MM-dd";
 	/**
-	 * ½«TimestampÀàĞÍµÄÈÕÆÚ×ª»»ÎªÏµÍ³²ÎÊı¶¨ÒåµÄ¸ñÊ½µÄ×Ö·û´®¡£
+	 * å°†Timestampç±»å‹çš„æ—¥æœŸè½¬æ¢ä¸ºç³»ç»Ÿå‚æ•°å®šä¹‰çš„æ ¼å¼çš„å­—ç¬¦ä¸²ã€‚
 	 * @param d
 	 * @return
 	 */
@@ -24,7 +24,7 @@ public class DateUtil
 
 
 	/**
-	 * ½«DateÀàĞÍµÄÈÕÆÚ×ª»»ÎªÏµÍ³²ÎÊı¶¨ÒåµÄ¸ñÊ½µÄ×Ö·û´®¡£
+	 * å°†Dateç±»å‹çš„æ—¥æœŸè½¬æ¢ä¸ºç³»ç»Ÿå‚æ•°å®šä¹‰çš„æ ¼å¼çš„å­—ç¬¦ä¸²ã€‚
 	 * @param d
 	 * @param pattern
 	 * @return
