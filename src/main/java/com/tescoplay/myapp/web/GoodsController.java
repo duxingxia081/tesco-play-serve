@@ -1,10 +1,7 @@
 package com.tescoplay.myapp.web;
 
 import com.tescoplay.myapp.dto.GoodsEvaluateDTO;
-import com.tescoplay.myapp.entity.Goods;
-import com.tescoplay.myapp.entity.GoodsBreed;
-import com.tescoplay.myapp.entity.GoodsEvaluate;
-import com.tescoplay.myapp.entity.GoodsType;
+import com.tescoplay.myapp.entity.*;
 import com.tescoplay.myapp.facade.GoodsEvaluateFacade;
 import com.tescoplay.myapp.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +24,7 @@ import java.util.List;
 @RequestMapping("/goods")
 public class GoodsController {
 
-	public static final String ROOT = "/home/weizh/img/";
+	public static final String ROOT = "d:/";
 
 	private final ResourceLoader resourceLoader;
 
@@ -106,12 +103,26 @@ public class GoodsController {
 	@GetMapping("/goodsImgs&goodsId={goodsId}")
 	@ResponseBody
 	@Transactional(readOnly = true)
-	public List<String> goodsImags(@PathVariable String goodsId) {
-		List<String> list = new ArrayList<>();
+	public List<GoodsImages> goodsImags(@PathVariable String goodsId) {
+		List<GoodsImages> list = new ArrayList<>();
 		if(!StringUtils.isEmpty(goodsId))
 		{
 			list = goodsImgsService.findByGoodsId(Long.parseLong(goodsId));
 		}
+		return list;
+	}
+	@GetMapping("/listTopGoods")
+	@ResponseBody
+	@Transactional(readOnly = true)
+	public List<Goods> listTopGoods() {
+		List list = goodsService.listTopGoods();
+		return list;
+	}
+	@GetMapping("/listGoodsByType&goodsType={goodsType}")
+	@ResponseBody
+	@Transactional(readOnly = true)
+	public List<Goods> listGoodsByType(@PathVariable String goodsType) {
+		List list = goodsService.listGoodsByType(goodsType);
 		return list;
 	}
 }

@@ -68,3 +68,8 @@ COMMENT = '商品评价';
 
 ALTER TABLE `tescoplay`.`goods`
 ADD COLUMN `goods_points` INT NOT NULL DEFAULT 0 COMMENT '积分' AFTER `goods_level`;
+ALTER TABLE `tescoplay`.`goods`
+ADD COLUMN `is_top_goods` VARCHAR(2) NULL DEFAULT 'N' AFTER `goods_points`;
+
+ALTER TABLE `tescoplay`.`goods_images`
+CHANGE COLUMN `image_path` `first_Image` VARCHAR(100) NOT NULL COMMENT '商品图片路径' ;

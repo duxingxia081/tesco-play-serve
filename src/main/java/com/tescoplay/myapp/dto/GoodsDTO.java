@@ -1,4 +1,4 @@
-package com.tescoplay.myapp.entity;
+package com.tescoplay.myapp.dto;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -6,41 +6,42 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.io.Serializable;
 
-@Entity
-public class Goods implements Serializable {
-
-	private static final long serialVersionUID = 1L;
-
-	@Id
-	@GeneratedValue
+public class GoodsDTO{
 	private Long goodsId;
 
-	@Column(nullable = false)
 	private Long goodsTypeId;
 
-	@Column(nullable = false)
 	private String goodsName;
 
-	@Column(nullable = false)
 	private String goodsDesc;
 
-	@Column(nullable = false)
 	private Float money;
 
-	@Column(nullable = false)
 	private String firstImage;
 
-	@Column(nullable = false)
 	private String isActive;
 
-	@Column(nullable = false)
 	private String goodsLevel;
 
-	@Column(nullable = false)
 	private Integer goodsPoints;
 
-	@Column(nullable = true)
+	private Long userBuyNum;
+
 	private String isTopGoods;
+	public GoodsDTO(){}
+	public GoodsDTO(Long goodsId, Long goodsTypeId, String goodsName, String goodsDesc, Float money, String firstImage, String goodsLevel, Integer goodsPoints, Long userBuyNum)
+	{
+		super();
+		this.goodsId=goodsId;
+		this.goodsTypeId=goodsTypeId;
+		this.goodsName=goodsName;
+		this.goodsDesc=goodsDesc;
+		this.money=money;
+		this.firstImage=firstImage;
+		this.goodsLevel=goodsLevel;
+		this.goodsPoints=goodsPoints;
+		this.userBuyNum=userBuyNum;
+	}
 	public Long getGoodsId() {
 		return goodsId;
 	}
@@ -111,6 +112,14 @@ public class Goods implements Serializable {
 
 	public void setGoodsPoints(Integer goodsPoints) {
 		this.goodsPoints = goodsPoints;
+	}
+
+	public Long getUserBuyNum() {
+		return userBuyNum;
+	}
+
+	public void setUserBuyNum(Long userBuyNum) {
+		this.userBuyNum = userBuyNum;
 	}
 
 	public String getIsTopGoods() {
