@@ -24,7 +24,7 @@ import java.util.List;
 @RequestMapping("/goods")
 public class GoodsController {
 
-	public static final String ROOT = "d:/";
+	public static final String ROOT = "/home/weizh/img/";
 
 	private final ResourceLoader resourceLoader;
 
